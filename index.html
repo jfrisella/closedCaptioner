@@ -6,8 +6,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="jquery.closed-captioner.js"></script>
+    <script src="data.js"></script>
     <script>
-        $("#cc-container").closedCaptioner();
+        var time = 0;
+        $("#cc-container").closedCaptioner({
+            data: ccData
+        });
+
+        var val = setInterval(function(){
+            time += 300;
+            $("#cc-container").closedCaptioner("updateTime", time);
+            if(time > 11000) clearInterval(val);
+        }, 300);
     </script>
 </body>
 </html>
